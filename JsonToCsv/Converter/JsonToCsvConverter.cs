@@ -10,6 +10,14 @@ namespace JsonToCsv.Converter
 {
     public class JsonToCsvConverter
     {
+        /// <summary>
+        /// Given a stream of json data, of known type T, will write the ouput converted to csv format
+        /// to output.
+        /// </summary>
+        /// <param name="bytes">Stream of Json data.</param>
+        /// <param name="output">Output stream.</param>
+        /// <typeparam name="T">Known type of input Json object.</typeparam>
+        /// <remarks>Currently relies on relatively flat data structure as input.</remarks>
         public static async Task Convert<T>(Stream bytes, TextWriter output)
         {
             var jsonObject = JsonParser.Parse<T>(bytes);
